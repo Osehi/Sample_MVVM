@@ -3,4 +3,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_id">UserId</string>
     <string name="search_button">Search</string>
+    <string name="post_title">My Journey About iPhone in Nigeria</string>
+    <string name="post_body">iPhone came to Nigeria in 2008. At that time the Nigeria Government opened her telecommunication space for investments and lots of players came in</string>
 </resources>
