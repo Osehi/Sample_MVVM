@@ -9,5 +9,18 @@
         android:id="@+id/homePageFragment"
         android:name="com.polish.mycomments.ui.HomePageFragment"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_commentDetailsFragment"
+            app:destination="@id/commentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDetailsFragment"
+        android:name="com.polish.mycomments.ui.CommentDetailsFragment"
+        android:label="fragment_comment_details"
+        tools:layout="@layout/fragment_comment_details" >
+        <argument
+            android:name="POSTItem"
+            app:argType="com.polish.mycomments.model.POSTItem" />
+    </fragment>
 </navigation>

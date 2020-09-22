@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.polish.mycomments.databinding.PostListItemBinding
+
 import com.polish.mycomments.model.POSTItem
 
 class HomePageAdapter(val clickListener:OnClickListener): ListAdapter<POSTItem, HomePageAdapter.POSTViewHolder>(DiffCallback){
@@ -38,6 +39,9 @@ class HomePageAdapter(val clickListener:OnClickListener): ListAdapter<POSTItem, 
 
     override fun onBindViewHolder(holder: POSTViewHolder, position: Int) {
         val post = getItem(position)
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(post)
+        }
 
         holder.bind(post, clickListener)
 
