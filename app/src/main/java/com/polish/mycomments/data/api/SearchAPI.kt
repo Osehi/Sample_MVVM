@@ -2,6 +2,7 @@ package com.polish.mycomments.data.api
 
 import com.polish.mycomments.constants.URLConstants
 import com.polish.mycomments.constants.URLEndPoint
+import com.polish.mycomments.model.jpcomments.JPostCommentItem
 import com.polish.mycomments.model.jpsearch.JPSearchItem
 import com.polish.mycomments.model.jpsearch.UserIdInput
 import okhttp3.OkHttpClient
@@ -15,10 +16,10 @@ interface SearchAPI {
     /*
         this is the endpoint
      */
-    @GET(URLEndPoint.SEARCH_FOR_COMMENTS)
+    @GET(URLEndPoint.SEARCH_COMMENTS_BY_POSTID)
     suspend fun findComments(
-        @Query("userId") userId:UserIdInput
-    ): List<JPSearchItem>
+        @Query("postId") userId:String
+    ): List<JPostCommentItem>
 
     /*
         this function creates the apiservice

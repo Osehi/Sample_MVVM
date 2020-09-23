@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="JPSearchItem"
-            type="com.polish.mycomments.model.jpsearch.JPSearchItem" />
+            name="JPostCommentITem"
+            type="com.polish.mycomments.model.jpcomments.JPostCommentItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/righteous"
                     android:padding="8dp"
-                    android:text="@{JPSearchItem.title}"
+                    android:text="@{JPostCommentITem.name}"
                     android:textAlignment="textStart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
                     android:fontFamily="@font/righteous"
                     android:lines="4"
                     android:padding="8dp"
-                    android:text="@{JPSearchItem.body}"
+                    android:text="@{JPostCommentITem.body}"
                     android:textAlignment="textStart"
                     android:textSize="@dimen/comment_textSize"
                     app:layout_constraintBottom_toBottomOf="parent"

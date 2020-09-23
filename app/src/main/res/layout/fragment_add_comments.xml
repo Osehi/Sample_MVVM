@@ -109,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:textSize="18sp"
+            android:padding="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_comment_buttonId"
@@ -117,6 +118,7 @@
         <TextView
             android:id="@+id/new_add_bodyId"
             android:layout_width="0dp"
+            android:padding="4dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:textSize="18sp"

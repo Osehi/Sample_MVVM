@@ -8,15 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polish.mycomments.databinding.ListItemJpresponseBinding
 import com.polish.mycomments.databinding.SearchListItemBinding
 import com.polish.mycomments.model.jpbody.JPPostResponse
+import com.polish.mycomments.model.jpcomments.JPostCommentItem
 import com.polish.mycomments.model.jpsearch.JPSearchItem
 
-class SearchCommentAdapter(val clickListener:OnClickListener): ListAdapter<JPSearchItem, SearchCommentAdapter.JPSearchViewHolder>(DiffCallback){
+class SearchCommentAdapter(val clickListener:OnClickListener): ListAdapter<JPostCommentItem, SearchCommentAdapter.JPSearchViewHolder>(DiffCallback){
 
     class JPSearchViewHolder(var binding: SearchListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(jpSearchItem: JPSearchItem, clickListener: OnClickListener){
+        fun bind(jPostCommentItem: JPostCommentItem, clickListener: OnClickListener){
 
-            binding.jpSearchItem = jpSearchItem
+            binding.jPostCommentITem = jPostCommentItem
 
             binding.executePendingBindings()
 
@@ -24,12 +25,12 @@ class SearchCommentAdapter(val clickListener:OnClickListener): ListAdapter<JPSea
 
     }
 
-    companion object DiffCallback: DiffUtil.ItemCallback<JPSearchItem>(){
-        override fun areItemsTheSame(oldItem: JPSearchItem, newItem: JPSearchItem): Boolean {
+    companion object DiffCallback: DiffUtil.ItemCallback<JPostCommentItem>(){
+        override fun areItemsTheSame(oldItem: JPostCommentItem, newItem: JPostCommentItem): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: JPSearchItem, newItem: JPSearchItem): Boolean {
+        override fun areContentsTheSame(oldItem:JPostCommentItem, newItem: JPostCommentItem): Boolean {
             return oldItem.id == newItem.id
         }
     }
@@ -48,9 +49,9 @@ class SearchCommentAdapter(val clickListener:OnClickListener): ListAdapter<JPSea
 
     }
 
-    class OnClickListener(val clickListener:(jpSearchItem: JPSearchItem) -> Unit){
+    class OnClickListener(val clickListener:(jpostCommentItem: JPostCommentItem) -> Unit){
 
-        fun onClick(jpSearchItem: JPSearchItem) = clickListener(jpSearchItem)
+        fun onClick(jpostCommentItem: JPostCommentItem) = clickListener(jpostCommentItem)
 
     }
 

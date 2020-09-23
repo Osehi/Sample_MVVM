@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_addCommentsFragment"
             app:destination="@id/addCommentsFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentDetailsFragment"
@@ -31,5 +34,11 @@
         android:name="com.polish.mycomments.ui.AddCommentsFragment"
         android:label="AddCommentsFragment"
         tools:layout="@layout/fragment_add_comments"
+        />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.polish.mycomments.ui.SearchResultFragment"
+        android:label="SearchResultFragment"
+        tools:layout="@layout/fragment_search_result"
         />
 </navigation>

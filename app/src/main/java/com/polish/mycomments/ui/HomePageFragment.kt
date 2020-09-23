@@ -77,14 +77,17 @@ class HomePageFragment : Fragment() {
             initialize the viewModels
          */
         homePageViewModel = ViewModelProvider(this).get(HomePageViewModel::class.java)
-        searchCommentViewModel = ViewModelProvider(this).get(SearchCommentViewModel::class.java)
+        searchCommentViewModel = ViewModelProvider(requireActivity()).get(SearchCommentViewModel::class.java)
 
         /*
             onclick of the search button
          */
         binding.searchButtonId.setOnClickListener {
             val userInfo = userInput()
+            Log.d(TAG, "from user: ${userInfo}")
             searchCommentViewModel.displaySearchResult(userInfo)
+            binding.inputSearchId.text.clear()
+            findNavController().navigate(R.id.action_homePageFragment_to_searchResultFragment)
         }
 
 
@@ -118,7 +121,7 @@ class HomePageFragment : Fragment() {
         homePageViewModel.myListOfPost.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
-                Log.d(TAG, "result: ${it}")
+//                Log.d(TAG, "result: ${it}")
             }
         })
 
@@ -138,12 +141,18 @@ class HomePageFragment : Fragment() {
         receive user input and add validation
      */
 
-    private fun userInput():UserIdInput{
+    private fun userInput():String{
 
+
+        val userId = binding.inputSearchId.text.toString()
+        /*
         var enteredId = UserIdInput()
         val userId = binding.inputSearchId.text.toString()
         enteredId = UserIdInput(userId)
         return enteredId
+
+         */
+        return userId
     }
 
     /*

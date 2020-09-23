@@ -1,10 +1,14 @@
 package com.polish.mycomments.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.polish.mycomments.R
 import com.polish.mycomments.adapter.SearchCommentAdapter
@@ -24,6 +28,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SearchResultFragment : Fragment() {
+
+    val TAG = "SEARCH_RESULT_FRAGMENT"
 
     lateinit var adapter:SearchCommentAdapter
     lateinit var searcResultRecyclerView: RecyclerView
@@ -59,6 +65,35 @@ class SearchResultFragment : Fragment() {
             create a binding object and inflate the layout
          */
         binding = FragmentSearchResultBinding.inflate(inflater)
+
+        /*
+            initialize the viewModel
+         */
+        searchResultViewModel = ViewModelProvider(requireActivity()).get(SearchCommentViewModel::class.java)
+
+        /*
+            initialize the recyclerview
+         */
+        searcResultRecyclerView = binding.searchCommentRecyclrview
+        searcResultRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        /*
+            initialize the adapter
+         */
+        adapter = SearchCommentAdapter(SearchCommentAdapter.OnClickListener{
+
+        })
+        /*
+            connect the recyclerview to the adapter
+         */
+        searcResultRecyclerView.adapter = adapter
+        /*
+            observe the data from the liveData
+         */
+        searchResultViewModel.searchResult.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+            Log.d(TAG, "out: ${it}")
+        })
 
 
         return binding.root
