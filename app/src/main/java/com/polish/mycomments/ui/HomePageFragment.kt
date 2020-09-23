@@ -109,6 +109,13 @@ class HomePageFragment : Fragment() {
             }
         })
 
+        /*
+            navigate to the add_comment fragment
+         */
+        binding.floatingActionButtonId.setOnClickListener{
+            findNavController().navigate(R.id.action_homePageFragment_to_addCommentsFragment)
+        }
+
 
         return binding.root
 

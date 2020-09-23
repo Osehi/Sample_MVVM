@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_commentDetailsFragment"
             app:destination="@id/commentDetailsFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_addCommentsFragment"
+            app:destination="@id/addCommentsFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentDetailsFragment"
@@ -23,4 +26,10 @@
             android:name="POSTItem"
             app:argType="com.polish.mycomments.model.POSTItem" />
     </fragment>
+    <fragment
+        android:id="@+id/addCommentsFragment"
+        android:name="com.polish.mycomments.ui.AddCommentsFragment"
+        android:label="AddCommentsFragment"
+        tools:layout="@layout/fragment_add_comments"
+        />
 </navigation>
