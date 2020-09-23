@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.polish.mycomments.R
+import com.polish.mycomments.adapter.SearchCommentAdapter
+import com.polish.mycomments.databinding.FragmentSearchResultBinding
+import com.polish.mycomments.viewmodel.SearchCommentViewModel
 
 /*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +24,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SearchResultFragment : Fragment() {
+
+    lateinit var adapter:SearchCommentAdapter
+    lateinit var searcResultRecyclerView: RecyclerView
+    lateinit var searchResultViewModel: SearchCommentViewModel
+    lateinit var binding:FragmentSearchResultBinding
 
     /*
     private var param1: String? = null
@@ -44,7 +53,16 @@ class SearchResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_result, container, false)
+//        return inflater.inflate(R.layout.fragment_search_result, container, false)
+
+        /*
+            create a binding object and inflate the layout
+         */
+        binding = FragmentSearchResultBinding.inflate(inflater)
+
+
+        return binding.root
+
     }
 
     /*

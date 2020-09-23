@@ -7,6 +7,9 @@ import kotlinx.coroutines.withContext
 
 class HomePageRepositoryImpl:HomePageRepository {
 
+    /*
+        this is a manual dependency injection
+     */
     val postAPI = PostAPI()
 
     override suspend fun getMyPost(): List<POSTItem> {

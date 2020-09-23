@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polish.mycomments.R
 import com.polish.mycomments.adapter.HomePageAdapter
 import com.polish.mycomments.databinding.FragmentHomePageBinding
+import com.polish.mycomments.model.jpsearch.UserIdInput
 import com.polish.mycomments.viewmodel.HomePageViewModel
+import com.polish.mycomments.viewmodel.SearchCommentViewModel
 
 /*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +39,8 @@ class HomePageFragment : Fragment() {
     lateinit var adapter:HomePageAdapter
     lateinit var myRecyclerView: RecyclerView
     lateinit var homePageViewModel: HomePageViewModel
+    lateinit var searchCommentViewModel: SearchCommentViewModel
+    lateinit var binding: FragmentHomePageBinding
 
     /*
     private var param1: String? = null
@@ -66,13 +70,22 @@ class HomePageFragment : Fragment() {
         /*
             create a binding object to inflate the homePageFragment layout
          */
-        val binding = FragmentHomePageBinding.inflate(inflater)
+         binding = FragmentHomePageBinding.inflate(inflater)
 
 
         /*
-            initialize the viewModel
+            initialize the viewModels
          */
         homePageViewModel = ViewModelProvider(this).get(HomePageViewModel::class.java)
+        searchCommentViewModel = ViewModelProvider(this).get(SearchCommentViewModel::class.java)
+
+        /*
+            onclick of the search button
+         */
+        binding.searchButtonId.setOnClickListener {
+            val userInfo = userInput()
+            searchCommentViewModel.displaySearchResult(userInfo)
+        }
 
 
 
@@ -119,6 +132,18 @@ class HomePageFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    /*
+        receive user input and add validation
+     */
+
+    private fun userInput():UserIdInput{
+
+        var enteredId = UserIdInput()
+        val userId = binding.inputSearchId.text.toString()
+        enteredId = UserIdInput(userId)
+        return enteredId
     }
 
     /*
