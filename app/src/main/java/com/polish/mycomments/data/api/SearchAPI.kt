@@ -2,6 +2,7 @@ package com.polish.mycomments.data.api
 
 import com.polish.mycomments.constants.URLConstants
 import com.polish.mycomments.constants.URLEndPoint
+import com.polish.mycomments.helper.LoggingInterceptor
 import com.polish.mycomments.model.jpcomments.JPostCommentItem
 import com.polish.mycomments.model.jpsearch.JPSearchItem
 import com.polish.mycomments.model.jpsearch.UserIdInput
@@ -27,16 +28,20 @@ interface SearchAPI {
 
     companion object {
 
+
         /*
             this is an okHttp client
          */
+        /*
         val client = OkHttpClient.Builder().build()
+
+         */
 
         operator fun invoke():SearchAPI{
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(URLConstants.BASE_URL)
-                .client(client)
+                .client(LoggingInterceptor.okHttpClient)
                 .build()
                 .create(SearchAPI::class.java)
 
