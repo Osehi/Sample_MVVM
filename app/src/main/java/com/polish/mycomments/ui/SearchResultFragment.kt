@@ -92,7 +92,7 @@ class SearchResultFragment : Fragment() {
          */
         searchResultViewModel.searchResult.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
-            Log.d(TAG, "out: ${it}")
+//            Log.d(TAG, "out: ${it}")
         })
 
 
